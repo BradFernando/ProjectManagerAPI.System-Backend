@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/empleados")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
 
     private final EmployeeService employeeService;
@@ -26,6 +27,11 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public EmployeeDto getEmployeeById(@PathVariable Long id) {
         return employeeService.getEmployeeById(id);
+    }
+
+    @GetMapping("/ci/{ci}")
+    public EmployeeDto getEmployeeByCI(@PathVariable String ci) {
+        return employeeService.getEmployeeByCI(ci);
     }
 
     @PostMapping

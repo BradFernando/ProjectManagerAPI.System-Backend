@@ -15,6 +15,12 @@ public class Company {
     @Column(name = "nombre", nullable = false)
     private String name;
 
+    @Column(name = "descripcion", nullable = false)
+    private String description;
+
+    @Column(name = "avatar")
+    private String avatar;
+
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Area> areas;
 }

@@ -33,6 +33,8 @@ public class CompanyService {
     public CompanyDto saveCompany(CompanyDto companyDto) {
         Company company = new Company();
         company.setName(companyDto.getName());
+        company.setDescription(companyDto.getDescription());
+        company.setAvatar(companyDto.getAvatar());
         return convertToDto(companyRepository.save(company));
     }
 
@@ -40,6 +42,8 @@ public class CompanyService {
         Company company = companyRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Empresa no encontrada con el ID: " + id));
         company.setName(companyDto.getName());
+        company.setDescription(companyDto.getDescription());
+        company.setAvatar(companyDto.getAvatar());
         return convertToDto(companyRepository.save(company));
     }
 
@@ -53,6 +57,8 @@ public class CompanyService {
         CompanyDto companyDto = new CompanyDto();
         companyDto.setId(company.getId());
         companyDto.setName(company.getName());
+        companyDto.setDescription(company.getDescription());
+        companyDto.setAvatar(company.getAvatar());
         return companyDto;
     }
 }

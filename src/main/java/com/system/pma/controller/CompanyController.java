@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/empresas")
+@CrossOrigin(origins = "*")
 public class CompanyController {
 
     private final CompanyService companyService;

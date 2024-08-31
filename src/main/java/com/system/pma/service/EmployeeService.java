@@ -40,6 +40,7 @@ public class EmployeeService {
 
     public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
         Employee employee = new Employee();
+        employee.setCI(employeeDto.getCI());
         employee.setFirstName(employeeDto.getFirstName());
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
@@ -55,6 +56,7 @@ public class EmployeeService {
     public EmployeeDto updateEmployee(Long id, EmployeeDto employeeDto) {
         Employee employee = employeeRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Empleado no encontrado con el ID: " + id));
+        employee.setCI(employeeDto.getCI());
         employee.setFirstName(employeeDto.getFirstName());
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
@@ -76,6 +78,7 @@ public class EmployeeService {
     private EmployeeDto convertToDto(Employee employee) {
         EmployeeDto employeeDto = new EmployeeDto();
         employeeDto.setId(employee.getId());
+        employeeDto.setCI(employee.getCI());
         employeeDto.setFirstName(employee.getFirstName());
         employeeDto.setLastName(employee.getLastName());
         employeeDto.setEmail(employee.getEmail());
@@ -83,4 +86,12 @@ public class EmployeeService {
         employeeDto.setJobTypeId(employee.getJobType().getId());
         return employeeDto;
     }
+
+    public EmployeeDto getEmployeeByCI(String ci) {
+        Employee employee = employeeRepository.findByCI(ci)
+                .orElseThrow(() -> new ResourceNotFoundException("Empleado no encontrado con el CI: " + ci));
+        return convertToDto(employee);
+    }
+
+
 }

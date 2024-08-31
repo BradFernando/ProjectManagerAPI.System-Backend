@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tipos-trabajo")
+@CrossOrigin(origins = "*")
 public class JobTypeController {
 
     private final JobTypeService jobTypeService;

@@ -12,6 +12,9 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "cedula", nullable = false, unique = true)
+    private String CI;
+
     @Column(name = "nombre", nullable = false)
     private String firstName;
 
